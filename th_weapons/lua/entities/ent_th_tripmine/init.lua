@@ -318,7 +318,7 @@ function ENT:OnTakeDamage( dmginfo )
 		return false
 	end
 	
-	-- return CGrenade::TakeDamage( pevInflictor, pevAttacker, flDamage, bitsDamageType );
+	self:Event_Killed( dmginfo )
 end
 
 --[[---------------------------------------------------------
