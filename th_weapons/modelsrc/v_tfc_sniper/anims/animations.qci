@@ -1,0 +1,57 @@
+$sequence idle {
+	idle
+	activity ACT_VM_IDLE_SPECIAL 1
+	fps 10
+	loop
+}
+
+$sequence aim {
+	aim
+	activity ACT_VM_PRIMARYATTACK_1 1
+	fps 20
+}
+
+$sequence fire {
+	fire
+	activity ACT_VM_PRIMARYATTACK_2 1
+	{ event 5001 0 20 }
+	fps 35
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW_SPECIAL 1
+	fps 30
+}
+
+$sequence holster {
+	holster
+	activity ACT_VM_HOLSTER_SPECIAL 1
+	fps 30
+}
+
+$sequence autoidle {
+	autoidle
+	activity ACT_VM_IDLE 1
+	fps 15
+	loop
+}
+$sequence autofire {
+	autofire
+	activity ACT_VM_PRIMARYATTACK 1
+	{ event 5001 0 40 }
+	fps 30
+	loop
+}
+
+$sequence autodraw {
+	autodraw
+	activity ACT_VM_DRAW 1
+	fps 30
+}
+
+$sequence autoholster {
+	autoholster
+	activity ACT_VM_HOLSTER 1
+	fps 30
+}

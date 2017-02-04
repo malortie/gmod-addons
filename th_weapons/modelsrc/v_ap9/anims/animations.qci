@@ -1,0 +1,44 @@
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 1
+	fps 12
+	loop
+}
+
+$sequence reload {
+	reload
+	activity ACT_VM_RELOAD 1
+	{ event 5004 26 "weapon_th_ap9.clipout" } 
+	{ event 5004 52 "weapon_th_ap9.clipin" } 
+	{ event 5004 78 "weapon_th_ap9.bolt" }
+	fps 35
+}
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	{ event 5004 22 "weapon_th_ap9.deploy" }
+	fps 30
+}
+
+$sequence shoot1 { 
+	shoot1
+	activity ACT_VM_PRIMARYATTACK 1
+	{ event 5001 0 12 }
+	fps 22
+	snap
+}
+$sequence shoot2 { 
+	shoot2
+	activity ACT_VM_PRIMARYATTACK 2
+	{ event 5001 0 12 }
+	fps 22
+	snap
+}
+
+$sequence shoot3 { 
+	shoot3
+	activity ACT_VM_PRIMARYATTACK 3
+	{ event 5001 0 12 }
+	fps 22
+	snap
+}

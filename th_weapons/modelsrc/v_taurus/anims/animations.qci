@@ -1,0 +1,85 @@
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 1
+	fps 16
+	//loop
+}
+
+$sequence idle2 {
+	idle2
+	activity ACT_VM_IDLE 2
+	fps 20
+	//loop
+}
+
+$sequence idle3 {
+	idle3
+	activity ACT_VM_IDLE 3
+	fps 18
+	//loop
+}
+
+$sequence shoot {
+	shoot
+	activity ACT_VM_PRIMARYATTACK 1
+	{ event 5001 0 11 }
+	snap
+	fps 30
+}
+
+$sequence shoot2 {
+	shoot2
+	activity ACT_VM_PRIMARYATTACK 2
+	{ event 5001 0 11 }
+	snap
+	fps 30
+}
+
+$sequence shoot3 {
+	shoot3
+	activity ACT_VM_PRIMARYATTACK 3
+	{ event 5001 0 11 }
+	snap
+	fps 50
+}
+
+$sequence shoot_empty {
+	shoot_empty
+	activity ACT_VM_DRYFIRE 1
+	{ event 5001 0 11 }
+	snap
+	fps 30
+}
+
+$sequence reload {
+	reload
+	activity ACT_VM_RELOAD_SPECIAL 1
+	{ event 5004 16 "weapon_th_taurus.clipout" } 
+	{ event 5004 48 "weapon_th_taurus.clipin" } 
+	{ event 5004 62 "weapon_th_taurus.release" } 
+	fps 35
+}
+
+$sequence reload2 {
+	reload2
+	activity ACT_VM_RELOAD 1
+	{ event 5004 11 "weapon_th_taurus.clipout" } 
+	{ event 5004 32 "weapon_th_taurus.clipin" } 
+	{ event 5004 43 "weapon_th_taurus.release" } 
+	fps 30
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW_SPECIAL 1
+	{ event 5004 17 "weapon_th_taurus.back" }
+	fps 45
+}
+
+$sequence draw2 {
+	draw2
+	activity ACT_VM_DRAW 1
+	{ event 5004 21 "weapon_th_taurus.back" }
+	fps 45
+	snap
+}

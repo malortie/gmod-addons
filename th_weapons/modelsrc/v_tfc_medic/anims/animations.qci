@@ -1,0 +1,37 @@
+$sequence idle {
+	idle
+	activity ACT_VM_IDLE 1
+	fps 30
+	loop
+}
+
+$sequence longidle {
+	longidle
+	activity ACT_VM_IDLE 2
+	fps 30
+	loop
+} 
+
+$sequence longuse {
+	longuse
+	activity ACT_VM_PRIMARYATTACK 1
+	fps 30
+}
+
+$sequence shortuse {
+	shortuse
+	activity ACT_VM_SECONDARYATTACK 1
+	fps 30
+}
+
+$sequence holster {
+	holster
+	activity ACT_VM_HOLSTER 1
+	fps 30
+} 
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	fps 30
+}

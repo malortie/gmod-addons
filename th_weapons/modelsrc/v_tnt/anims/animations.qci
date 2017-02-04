@@ -1,0 +1,57 @@
+$sequence idle {
+	idle
+	activity ACT_VM_IDLE 1
+	snap
+	fps 30
+	loop
+}
+
+$sequence fidget {
+	fidget
+	activity ACT_VM_FIDGET 1
+	snap
+	fps 30
+	loop
+}
+
+$sequence pinpull {
+	pinpull
+	activity ACT_VM_PRIMARYATTACK 1
+	{ event 5004 1 "weapon_th_tnt.special1" } { event 5001 11 "20" } 
+	snap
+	fps 50
+}
+
+$sequence throw1 {
+	throw1
+	activity ACT_HANDGRENADE_THROW1 1
+	snap
+	fps 25
+}
+
+$sequence throw2 {
+	throw2
+	activity ACT_HANDGRENADE_THROW2 1
+	snap
+	fps 30
+}
+
+$sequence throw3 {
+	throw3
+	activity ACT_HANDGRENADE_THROW3 1
+	snap
+	fps 40
+}
+
+$sequence holster {
+	holster
+	activity ACT_VM_HOLSTER 1
+	snap
+	fps 30
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	fps 30
+}

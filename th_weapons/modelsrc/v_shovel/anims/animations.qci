@@ -1,0 +1,73 @@
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 1
+	fps 13
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	fps 24
+}
+
+$sequence holster {
+	holster
+	activity ACT_VM_HOLSTER 1
+	fps 24
+}
+
+$sequence attack1 {
+	attack1
+	activity ACT_VM_HITCENTER 1
+	snap
+	fps 22
+}
+
+$sequence attack1miss {
+	attack1miss
+	activity ACT_VM_MISSCENTER 1
+	snap
+	fps 22
+}
+
+$sequence attack2 {
+	attack2
+	activity ACT_VM_MISSCENTER 2
+	snap
+	fps 22
+}
+
+$sequence attack2hit {
+	attack2hit
+	activity ACT_VM_HITCENTER 2
+	snap
+	fps 22
+}
+
+$sequence attack3 {
+	attack3
+	activity ACT_VM_MISSCENTER 3
+	snap
+	fps 24
+}
+
+$sequence attack3hit {
+	attack3hit
+	activity ACT_VM_HITCENTER 3
+	snap
+	fps 24
+}
+
+$sequence idle2 {
+	idle2
+	activity ACT_VM_IDLE 2
+	fps 15
+	loop
+}
+
+$sequence idle3 {
+	idle3
+	activity ACT_VM_IDLE 3
+	fps 15
+	loop
+}

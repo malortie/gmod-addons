@@ -1,0 +1,70 @@
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 1
+	fps 16
+	loop
+}
+
+$sequence idle2 {
+	idle2
+	activity ACT_VM_IDLE 2
+	fps 16
+	loop
+}
+
+$sequence idle3 {
+	idle3
+	activity ACT_VM_IDLE 3
+	fps 14
+	loop
+}
+
+$sequence shoot {
+	shoot
+	activity ACT_VM_PRIMARYATTACK 1
+	{ event 5001 0 11 }
+	snap
+	fps 25
+}
+
+$sequence shoot_empty {
+	shoot_empty
+	activity ACT_GLOCK_SHOOTEMPTY 1
+	{ event 5001 0 11 }
+	snap
+	fps 25
+}
+
+$sequence reload {
+	reload
+	activity ACT_GLOCK_SHOOT_RELOAD 1
+	{ event 5004 4 "weapon_th_glock.special2" }
+	{ event 5004 23 "weapon_th_glock.special1" }
+	fps 18
+}
+
+$sequence reload_noshot {
+	reload_noshot
+	activity ACT_VM_RELOAD 1
+	{ event 5004 4 "weapon_th_glock.special2" }
+	{ event 5004 23 "weapon_th_glock.special1" }
+	fps 18
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	fps 16
+}
+
+$sequence holster {
+	holster
+	activity ACT_VM_HOLSTER 1
+	fps 16
+}
+
+$sequence add_silencer {
+	add_silencer
+	activity ACT_VM_ATTACH_SILENCER 1
+	fps 18
+}

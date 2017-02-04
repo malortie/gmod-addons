@@ -1,0 +1,46 @@
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 1
+	fps 30
+	loop
+}
+	
+$sequence start { 
+	start
+	activity ACT_VM_PULLBACK 1
+	fps 60
+}
+
+$sequence swing1 { 
+	swing1
+	activity ACT_VM_SECONDARYATTACK 1
+	fps 50
+}
+
+$sequence fire1 {
+	fire1
+	activity ACT_VM_PRIMARYATTACK_1 1
+	fps 30
+	//loop
+	snap
+}
+
+$sequence fire2 {
+	fire2
+	activity ACT_VM_PRIMARYATTACK_2 1
+	fps 30
+	//loop
+	snap
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	fps 30
+}
+
+$sequence holster {
+	holster
+	activity ACT_VM_HOLSTER 1
+	fps 30
+}

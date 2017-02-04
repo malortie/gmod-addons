@@ -1,0 +1,24 @@
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 1
+	fps 20
+	loop
+}
+
+$sequence fidget1 {
+	fidget1
+	activity ACT_VM_FIDGET 1
+	fps 30
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	fps 30
+}
+
+$sequence drop {
+	drop
+	activity ACT_VM_HOLSTER 1
+	fps 30
+}

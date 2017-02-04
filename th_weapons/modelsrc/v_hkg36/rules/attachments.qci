@@ -1,0 +1,4 @@
+$attachment 0 muzzle 0 0 0 rotate 0 90 -90
+$attachment 1 eject 0 0 0 rotate 0 90 90
+// $attachment 1 "Bone 04" -2.9 -22 2.8
+// $attachment 2 Bone52 0 -1 0

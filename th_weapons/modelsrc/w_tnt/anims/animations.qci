@@ -1,0 +1,47 @@
+$sequence idle {
+	idle
+	activity ACT_IDLE 1
+	fps 30
+}
+
+$sequence roll1 {
+	roll1
+	activity ACT_GRENADE_ROLL 1
+	fps 15
+	loop
+}
+
+$sequence roll2 {
+	roll2
+	activity ACT_GRENADE_ROLL 2
+	fps 15
+	loop
+}
+
+$sequence toss_1 {
+	toss_1
+	activity ACT_GRENADE_TOSS 1
+	fps 10
+	loop
+}
+
+$sequence toss2 {
+	toss2
+	activity ACT_GRENADE_TOSS 2
+	fps 10
+	loop
+}
+
+$sequence toss_2 {
+	toss_2
+	activity ACT_GRENADE_TOSS 3
+	fps 10
+	loop
+}
+
+$sequence toss_3 {
+	toss_3
+	activity ACT_GRENADE_TOSS 4
+	fps 10
+	loop
+}

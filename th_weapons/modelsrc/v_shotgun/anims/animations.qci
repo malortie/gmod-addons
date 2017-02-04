@@ -1,0 +1,74 @@
+$sequence sm_idle {
+	sm_idle
+	activity ACT_VM_IDLE 1
+	snap
+	fps 9
+	loop
+}
+
+$sequence shoot {
+	shoot
+	activity ACT_VM_PRIMARYATTACK 1
+	{ event 5001 0 31 }
+	snap
+	fps 20
+}
+
+$sequence shoot_big {
+	shoot_big
+	activity ACT_VM_SECONDARYATTACK 1
+	{ event 5001 0 41 }
+	snap
+	fps 13
+}
+
+$sequence reload {
+	reload
+	activity ACT_VM_RELOAD 1
+	snap
+	fps 16
+}
+
+$sequence pump {
+	pump
+	activity ACT_SHOTGUN_PUMP 1
+	snap
+	fps 13
+}
+
+$sequence start_reload {
+	start_reload
+	activity ACT_SHOTGUN_RELOAD_START 1
+	snap
+	fps 12
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	snap
+	fps 24
+}
+
+$sequence reholster {
+	reholster
+	activity ACT_VM_HOLSTER 1
+	snap
+	fps 30
+}
+
+$sequence idle4 {
+	idle4
+	activity ACT_SHOTGUN_IDLE4 1
+	snap
+	fps 9
+	loop
+}
+
+$sequence deepidle {
+	deepidle
+	activity ACT_SHOTGUN_IDLE_DEEP 1
+	snap
+	fps 12
+	loop
+}

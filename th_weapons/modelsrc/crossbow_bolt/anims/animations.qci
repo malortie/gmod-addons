@@ -1,0 +1,5 @@
+$sequence idle {
+	idle
+	activity ACT_IDLE 1
+	fps 30
+}

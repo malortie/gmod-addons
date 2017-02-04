@@ -1,0 +1,56 @@
+$sequence longidle {
+	longidle
+	activity ACT_VM_IDLE 1
+	fps 8
+}
+
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 2
+	fps 35
+}
+
+$sequence grenade {
+	grenade
+	activity ACT_VM_SECONDARYATTACK 1
+	snap
+	fps 30
+}
+
+$sequence reload {
+	reload
+	activity ACT_VM_RELOAD 1
+	{ event 5004 5 Weapon_MP5.Special1 }
+	{ event 5004 24 Weapon_MP5.Special2 }
+	fps 30
+}
+
+$sequence deploy {
+	deploy
+	activity ACT_VM_DRAW 1
+	fps 12
+}
+
+$sequence shoot_1 {
+	shoot_1
+	activity ACT_VM_PRIMARYATTACK 1
+	{ event 5001 0 20 }
+	snap
+	fps 10
+}
+
+$sequence shoot_2 {
+	shoot_2
+	activity ACT_VM_PRIMARYATTACK 2
+	{ event 5001 0 20 }
+	snap
+	fps 10
+}
+
+$sequence shoot_3 {
+	shoot_3
+	activity ACT_VM_PRIMARYATTACK 3
+	{ event 5001 0 20 }
+	snap
+	fps 10
+}

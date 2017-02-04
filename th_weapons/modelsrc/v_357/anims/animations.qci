@@ -1,0 +1,55 @@
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 1
+	fps 30
+	loop
+}
+
+$sequence fidget1 {
+	fidget1
+	activity ACT_VM_FIDGET 1
+	fps 30
+	snap
+}
+
+$sequence fire1 {
+	fire1
+	activity ACT_VM_PRIMARYATTACK 1
+	{ event 5001 0 31 }
+	snap
+	fps 30
+	snap
+}
+
+$sequence reload {
+	reload
+	activity ACT_VM_RELOAD 1
+	{ event 5004 72 "weapon_th_357.reload" }
+	fps 36
+}
+
+$sequence holster {
+	holster
+	activity ACT_VM_HOLSTER 1
+	fps 30
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	fps 30
+}
+
+$sequence idle2 {
+	idle2
+	activity ACT_VM_IDLE 2
+	fps 30
+	loop
+}
+
+$sequence idle3 {
+	idle3
+	activity ACT_VM_IDLE 3
+	fps 30
+	loop
+}

@@ -1,0 +1,79 @@
+
+$sequence idle1 {
+	idle1
+	activity ACT_VM_IDLE 1
+	fps 30
+	loop
+}
+
+$sequence idle2 {
+	idle2
+	activity ACT_CROSSBOW_IDLE_UNLOADED 1
+	fps 30
+	loop
+}
+
+$sequence fidget1 {
+	fidget1
+	activity ACT_VM_FIDGET 1
+	fps 30
+}
+
+$sequence fidget2 {
+	fidget2
+	activity ACT_CROSSBOW_FIDGET_UNLOADED 1
+	fps 30
+}
+
+$sequence fire1 {
+	fire1
+	activity ACT_VM_PRIMARYATTACK 1
+	snap
+	fps 60
+}
+
+$sequence fire2 {
+	fire2
+	snap
+	fps 30
+}
+
+$sequence fire3 {
+	fire3
+	activity ACT_VM_SECONDARYATTACK 1
+	snap
+	fps 30
+}
+
+$sequence reload {
+	reload
+	activity ACT_VM_RELOAD 1
+	fps 30
+}
+
+$sequence draw1 {
+	draw1
+	activity ACT_VM_DRAW 1
+	fps 30
+}
+
+$sequence draw2 {
+	draw2
+	activity ACT_CROSSBOW_DRAW_UNLOADED 1
+	fps 30
+	snap
+}
+
+$sequence holster1 {
+	holster1
+	activity ACT_VM_HOLSTER 1
+	snap
+	fps 30
+}
+
+$sequence holster2 {
+	holster2
+	activity ACT_CROSSBOW_HOLSTER_UNLOADED 1
+	snap
+	fps 30
+}

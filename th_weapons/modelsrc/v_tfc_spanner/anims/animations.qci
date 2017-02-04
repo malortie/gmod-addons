@@ -1,0 +1,37 @@
+$sequence idle {
+	idle
+	activity ACT_VM_IDLE 1
+	fps 15
+}
+
+$sequence attack1 {
+	attack1
+	activity ACT_VM_HITCENTER 1
+	snap
+	fps 40
+}
+
+$sequence attack2 {
+	attack2
+	activity ACT_VM_HITCENTER2 2
+	snap
+	fps 40
+}
+
+$sequence use {
+	use
+	activity ACT_VM_RELOAD 1
+	fps 30
+}
+
+$sequence draw {
+	draw
+	activity ACT_VM_DRAW 1
+	fps 30
+}
+
+$sequence holster {
+	holster
+	activity ACT_VM_HOLSTER 1
+	fps 30
+}
