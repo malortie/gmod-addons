@@ -374,7 +374,6 @@ function ENT:Explode( tr, bitsDamageType )
 	dmginfo:SetDamageForce( vector_origin )
 	dmginfo:SetDamageType( DMG_BLAST )
 
-	print( self:GetBlastRadius() )
 	util.BlastDamageInfo( dmginfo, tr.HitPos, self:GetBlastRadius() )
 
 	local effectdata = EffectData()

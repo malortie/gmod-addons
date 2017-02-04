@@ -17,7 +17,7 @@ SWEP.ViewModelFlip	= false
 SWEP.ViewModel		= "models/th/v_tripmine/v_tripmine.mdl"
 SWEP.WorldModel		= "models/w_tripmine.mdl"
 
-SWEP.Spawnable			= false
+SWEP.Spawnable			= true
 SWEP.AdminOnly			= false
 
 SWEP.Primary.ClipSize		= -1
