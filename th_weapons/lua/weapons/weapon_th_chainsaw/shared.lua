@@ -378,8 +378,6 @@ function SWEP:GetTipPositionAndAngles( position, angles )
 	
 	pos = pos + ang:Forward() * 32 + ang:Right() * 2 - ang:Up() * 6
 	
-	-- debugoverlay.Box( pos, Vector(-4,-4,-4), Vector(4, 4, 4), 0.02, Color( 255, 255, 0, 1 ) )
-	
 	angles.p 	= ang.p
 	angles.y 	= ang.y
 	angles.r 	= ang.r

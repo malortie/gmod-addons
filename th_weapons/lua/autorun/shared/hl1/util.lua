@@ -31,8 +31,6 @@ function CheckTraceHullAttack( self, distance, mins, maxs, damage, bitsDamageTyp
 		mask = MASK_SHOT_HULL
 	})
 	
-	debugoverlay.Box( endpos, mins, maxs, 1, Color( 255, 255, 255, 255 ) )
-	
 	if ( tr.Hit && !tr.HitWorld ) then
 	
 		local hit = tr.Entity

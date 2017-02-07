@@ -216,8 +216,6 @@ if ( SERVER ) then
 
 	vecSrc = tr.StartPos + forward * forwardLength + tr.HitNormal * normalLength
 	
-	debugoverlay.Box( vecSrc, Vector(-4,-4,-4), Vector(4,4,4), 1.0, Color( 0, 255, 0, 1 ) )
-	
 	local flame = ents.Create( self.FlameClassName )
 
 	if IsValid( flame ) then
