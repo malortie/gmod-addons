@@ -12,6 +12,8 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Burst fire.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 1
+SWEP.SlotPos			= 4
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
@@ -25,7 +27,7 @@ SWEP.Primary.ClipSize = 40
 SWEP.Primary.DefaultClip = 40
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = AMMO_CLASS_TH_AP9
-SWEP.Primary.FireRate = 0.16
+SWEP.Primary.FireRate = 0.13
 
 SWEP.Secondary.ClipSize = -1
 SWEP.Secondary.DefaultClip = -1
