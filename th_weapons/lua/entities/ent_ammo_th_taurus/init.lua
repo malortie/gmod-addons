@@ -38,7 +38,7 @@ end
 function ENT:AddAmmo( player )
 	
 	-- Give to the player, 20 taurus bullets.
-	if player:GiveAmmo( 20, AMMO_CLASS_TH_TAURUS, false ) != -1 then
+	if player:GiveAmmo( 10, AMMO_CLASS_TH_TAURUS, false ) != -1 then
 		-- Play pickup sound.
 		self:EmitSound( self.PickupSound )
 		return true
