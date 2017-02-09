@@ -11,6 +11,8 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Toss satchel.\n+attack2: Detonate satchel.\n+reload: Reload.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot				= 4
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
