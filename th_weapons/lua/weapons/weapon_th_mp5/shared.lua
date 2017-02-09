@@ -11,6 +11,8 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Launch grenade.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot				= 2
+SWEP.SlotPos			= 1
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
@@ -72,7 +74,7 @@ function SWEP:PrimaryAttack()
 	local vecSrc = self.Owner:GetShootPos()
 	local vecAiming = self.Owner:GetAimVector()
 
-	self.Owner:ViewPunch( Angle( RandomFloat( -2, 2 ), 0, 0 ) )
+	self.Owner:ViewPunch( Angle( RandomFloat( -1.5, 1.5 ), 0, 0 ) )
 	
 	self.Weapon:EmitSound( self.ShootSound )
 	
@@ -101,7 +103,7 @@ function SWEP:PrimaryAttack()
 	self:DefaultShellEject()
 	--
 	
-	self:SetNextPrimaryFire( CurTime() + 0.1 )
+	self:SetNextPrimaryFire( CurTime() + 0.08 )
 
 	self.Weapon:SetNextIdle( CurTime() + RandomFloat( 10, 15 ) )
 end
