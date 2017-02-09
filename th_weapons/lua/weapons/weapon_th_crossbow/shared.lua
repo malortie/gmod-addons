@@ -11,6 +11,8 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Toggle Zoom.\n+reload: Reload.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot			= 2
+SWEP.SlotPos			= 3
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
