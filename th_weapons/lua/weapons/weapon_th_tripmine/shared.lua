@@ -11,6 +11,8 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Place tripmine.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot				= 4
+SWEP.SlotPos			= 3
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
