@@ -322,7 +322,7 @@ function SWEP:CanPrimaryAttack()
 	
 	if !self.FiresUnderwater && self.Owner:WaterLevel() == 3 then
 		self:PlayEmptySound()
-		seff:SetNextPrimaryFire( CurTime() + self.Primary.FireRate )
+		self:SetNextPrimaryFire( CurTime() + self.Primary.FireRate )
 		return false
 	end
 
@@ -347,7 +347,7 @@ function SWEP:CanSecondaryAttack()
 	
 	if !self.AltFiresUnderwater && self.Owner:WaterLevel() == 3 then
 		self:PlayEmptySound()
-		seff:SetNextSecondaryFire( CurTime() + self.Secondary.FireRate )
+		self:SetNextSecondaryFire( CurTime() + self.Secondary.FireRate )
 		return false
 	end
 
