@@ -11,6 +11,8 @@ SWEP.Contact		= ''
 SWEP.Purpose		= ''
 SWEP.Instructions	= '+attack: Heal.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot				= 0
+SWEP.SlotPos			= 5
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
