@@ -11,6 +11,8 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 1
+SWEP.SlotPos			= 3
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
@@ -20,11 +22,11 @@ SWEP.WorldModel = 'models/th/w_taurus/w_taurus.mdl'
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
 
-SWEP.Primary.ClipSize = 20
-SWEP.Primary.DefaultClip = 20
+SWEP.Primary.ClipSize = 10
+SWEP.Primary.DefaultClip = 10
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = AMMO_CLASS_TH_TAURUS
-SWEP.Primary.FireRate = 0.3
+SWEP.Primary.FireRate = 0.25
 
 SWEP.Secondary.ClipSize = -1
 SWEP.Secondary.DefaultClip = -1
