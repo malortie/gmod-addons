@@ -11,6 +11,8 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Toggle Zoom.\n+reload: Reload.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot				= 3
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
@@ -125,8 +127,11 @@ function SWEP:PrimaryAttack()
 	
 	self.Owner:SetEyeAngles( viewpunch )
 	
+	if self:IsZoomed() then
+	self:SetNextPrimaryFire( CurTime() + self.Primary.FireRate + 0.7 )
+	else
 	self:SetNextPrimaryFire( CurTime() + self.Primary.FireRate )
-	self:SetNextSecondaryFire( CurTime() + self.Primary.FireRate )
+	end
 	self.Weapon:SetNextIdle( CurTime() + RandomFloat( 10, 15 ) )
 	
 	self.Weapon:SetLastFireTime( CurTime() )
