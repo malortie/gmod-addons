@@ -12,7 +12,7 @@ SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
 SWEP.Slot			= 3
-SWEP.SlotPos			= 3
+SWEP.SlotPos			= 4
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
