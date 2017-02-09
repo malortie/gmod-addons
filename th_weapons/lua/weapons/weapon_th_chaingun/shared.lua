@@ -11,6 +11,8 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 3
+SWEP.SlotPos			= 3
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
@@ -308,7 +310,7 @@ function SWEP:DoFire()
 	self.Owner:MuzzleFlash()
 	
 	local bullet = {}
-	bullet.Num 		= 1
+	bullet.Num 		= 4
 	bullet.Src 		= owner:GetShootPos()
 	bullet.Dir 		= owner:GetAimVector()
 	bullet.Spread 	= VECTOR_CONE_10DEGREES
@@ -325,7 +327,7 @@ function SWEP:DoFire()
 	self:DefaultShellEject()
 	--
 	
-	self:TakePrimaryAmmo( 1 )
+	self:TakePrimaryAmmo( 2 )
 	
 	owner:SetAnimation( PLAYER_ATTACK1 )
 	
