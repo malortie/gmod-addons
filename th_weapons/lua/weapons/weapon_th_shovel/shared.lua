@@ -11,6 +11,8 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Swing.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot				= 0
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
