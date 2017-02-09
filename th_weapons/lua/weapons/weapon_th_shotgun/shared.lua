@@ -12,6 +12,8 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire using one barrel.\n+attack2: Fire using two barrels.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot				= 2
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
