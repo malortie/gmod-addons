@@ -12,6 +12,8 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= ''
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 0
+SWEP.SlotPos			= 4
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
