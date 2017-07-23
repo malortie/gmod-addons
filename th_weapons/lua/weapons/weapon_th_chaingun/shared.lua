@@ -321,15 +321,16 @@ function SWEP:DoFire()
 
 	self:DoMuzzleFlash( MUZZLEFLASH_TH_CHAINGUN )
 	
-	--
 	self:DefaultShellEject()
-	--
 	
 	self:TakePrimaryAmmo( 1 )
 	
 	owner:SetAnimation( PLAYER_ATTACK1 )
 	
 	owner:DoAnimationEvent( PLAYERANIMEVENT_ATTACK_PRIMARY )
+	
+	-- Kick the player's view angles.
+	owner:ViewPunch( Angle( RandomFloat( -0.1, 0.1 ), RandomFloat( -0.1, 0.1 ), 0 ) )
 	
 	self.Weapon:EmitSound( self.ShootSound )
 end
