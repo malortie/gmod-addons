@@ -11,11 +11,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions = '+attack: Swing.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 0
+SWEP.SlotPos			= 1
 
 SWEP.ViewModelFOV 	= 90
 SWEP.ViewModelFlip 	= false
 SWEP.ViewModel		= "models/th/v_crowbar/v_crowbar.mdl"
 SWEP.WorldModel		= "models/th/w_crowbar/w_crowbar.mdl"
+SWEP.PModel			= "models/th/p_crowbar/p_crowbar.mdl"
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false

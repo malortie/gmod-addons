@@ -1,0 +1,6 @@
+$sequence idle {
+	idle
+	activity ACT_IDLE 1
+	{ event 3001 0 "2" }
+	fps 30
+}

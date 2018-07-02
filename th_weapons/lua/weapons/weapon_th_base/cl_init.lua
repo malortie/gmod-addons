@@ -160,9 +160,15 @@ end
 	Desc: Draws the world model (not the viewmodel)
 -----------------------------------------------------------]]
 function SWEP:DrawWorldModel()
+
+	if ( self.PModel != nil and IsValid( self.Owner ) ) then
+		-- Set player holding weapon model.
+		self:SetModel(self.PModel)
+	end
+	
+	self:PreDrawWorldModel()
 	
 	self.Weapon:DrawModel()
-
 end
 
 
@@ -171,11 +177,15 @@ end
 	Desc: Draws the world model (not the viewmodel)
 -----------------------------------------------------------]]
 function SWEP:DrawWorldModelTranslucent()
-	
-	self.Weapon:DrawModel()
 
+	self.Weapon:DrawModel()
+	
 end
 
+--
+function SWEP:PreDrawWorldModel()
+end
+--
 
 --[[---------------------------------------------------------
 	Name: AdjustMouseSensitivity
@@ -209,12 +219,24 @@ end
 -----------------------------------------------------------]]
 function SWEP:FireAnimationEvent( pos, ang, event, options )
 
+	if event == 21 then return true end
 	if ( event == 5001 or event == 5011 or event == 5021 or event == 5031 ) then
-
+		
+		if !self:ShouldDrawMuzzleFlash() then return true end
+		
+		if self:IsCarriedByLocalPlayer() and self.Owner:ShouldDrawLocalPlayer() then
+			return
+		end
+		
 		local index = tonumber(options)
 		local attachment = math.floor( ( event - 4991 ) / 10 )
 		
-		self:DoMuzzleFlash( index, attachment )
+		local data = EffectData()
+		data:SetFlags( 0 )
+		data:SetEntity( self.Owner:GetViewModel() )
+		data:SetAttachment( 1 )
+		data:SetScale( self.Weapon:GetMuzzleFlashScale() or 1 )
+		util.Effect( self:GetMuzzleEffectName(), data )
 		
 		return true
 	end

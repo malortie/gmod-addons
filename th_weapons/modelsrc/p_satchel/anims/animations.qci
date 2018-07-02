@@ -1,0 +1,15 @@
+$sequence idle {
+	idle
+	activity ACT_IDLE 1
+	fps 30
+}
+
+/*
+
+$sequence onback {
+	onback
+	activity ACT_IDLE 1
+	fps 30
+}
+
+*/

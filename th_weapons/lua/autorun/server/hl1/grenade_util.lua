@@ -3,6 +3,9 @@ if !IsHL1Mounted() then return end
 
 local grenade_contact_damage = GetConVar( 'sk_hl1_plr_dmg_grenade' ) or CreateConVar( 'sk_hl1_plr_dmg_grenade', '100' )
 
+-- Blast radius scale factor
+local grenade_radius_factor = GetConVar( 'sk_hl1_grenade_radius_factor' ) or CreateConVar( 'sk_hl1_grenade_radius_factor', '2.5' )
+
 local GrenadeContactModel	= 'models/grenade.mdl'
 local GrenadeTimedModel 	= 'models/w_grenade.mdl'
 local GrenadeSatchelModel 	= 'models/w_satchel.mdl'
@@ -50,7 +53,7 @@ function CGrenade.ShootContact( owner, vecStart, vecVelocity )
 	grenade.m_pfnTouch = grenade.ExplodeTouch
 
 	grenade:SetBlastDamage( grenade_contact_damage:GetFloat() )
-	grenade:SetBlastRadius( grenade:GetBlastDamage() ) 
+	grenade:SetBlastRadius( grenade:GetBlastDamage() * grenade_radius_factor:GetFloat() ) 
 
 	return grenade
 end
@@ -98,7 +101,7 @@ function CGrenade.ShootTimed( owner, vecStart, vecVelocity, time )
 	
 	grenade:SetModel( GrenadeTimedModel )
 	grenade:SetBlastDamage( 100 )
-	grenade:SetBlastRadius( grenade:GetBlastDamage() ) 
+	grenade:SetBlastRadius( grenade:GetBlastDamage() * grenade_radius_factor:GetFloat() ) 
 	
 	-- New
 	grenade:SetModelScale( grenade:GetModelScale() * 0.95, 0 )
@@ -160,7 +163,7 @@ function CGrenade.ShootTimedTNT( owner, vecStart, vecVelocity, time )
 	
 	grenade:SetModel( GrenadeTNTModel )
 	grenade:SetBlastDamage( 100 )
-	grenade:SetBlastRadius( grenade:GetBlastDamage() ) 
+	grenade:SetBlastRadius( grenade:GetBlastDamage() * grenade_radius_factor:GetFloat() ) 
 	
 	-- New
 	grenade:SetModelScale( grenade:GetModelScale() * 0.95, 0 )
@@ -201,7 +204,7 @@ function CGrenade.ShootSatchelCharge( owner, vecStart, vecVelocity )
 	--
 	grenade:Spawn()
 	grenade:Activate()
-	grenade:SetBlastRadius( grenade:GetBlastDamage() )
+	grenade:SetBlastRadius( grenade:GetBlastDamage() * grenade_radius_factor:GetFloat() )
 	--
 	
 	-- Detonate in "time" seconds

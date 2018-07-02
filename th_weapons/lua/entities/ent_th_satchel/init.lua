@@ -18,6 +18,9 @@ ENT.BoundSound = 'ent_th_satchel.bounce'
 -- Represents the amount of damage casted to a player.
 local satchel_blast_damage = GetConVar('sk_th_plr_dmg_satchel') or CreateConVar( 'sk_th_plr_dmg_satchel', '150' )
 
+-- Blast radius scale factor
+local satchel_radius_factor = GetConVar( 'sk_hl1_grenade_radius_factor' ) or CreateConVar( 'sk_hl1_grenade_radius_factor', '2.5' )
+
 --[[---------------------------------------------------------
 	Perform Server-side initialization.
 -----------------------------------------------------------]]
@@ -38,7 +41,7 @@ function ENT:InitializeServerSide()
 	self:NextThink( CurTime() + 0.1 )
 	
 	self:SetBlastDamage( satchel_blast_damage:GetFloat() )
-	self:SetBlastRadius( self:GetBlastDamage() )
+	self:SetBlastRadius( self:GetBlastDamage() * satchel_radius_factor:GetFloat() )
 	self:SetGravity( 0.5 )
 	self:SetFriction( 0.8 )
 

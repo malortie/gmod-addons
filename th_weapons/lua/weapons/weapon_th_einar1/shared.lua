@@ -11,11 +11,14 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Toggle Zoom.\n+reload: Reload.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot			= 3
+SWEP.SlotPos			= 1
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
 SWEP.ViewModel		= "models/th/v_tfc_sniper/v_tfc_sniper.mdl"
 SWEP.WorldModel		= 'models/th/w_isotopebox/w_isotopebox.mdl'
+SWEP.PModel			= 'models/th/p_sniper2/p_sniper2.mdl'
 
 SWEP.Spawnable			= true
 SWEP.AdminOnly			= false
@@ -81,14 +84,18 @@ function SWEP:Initialize()
 	self.Weapon:SetLastFireTime( 0 )
 	self.Weapon:SetNumShotsFired( 0 )
 	self.Weapon:SetWasJustFired( false )
-
-	self:SetHoldType( 'crossbow' )
+	
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_TH_EINAR1 )
+	self.Weapon:SetMuzzleFlashScale( 1.5 )
+	
+	self:SetHoldType( 'ar2' )
 end
 
 --[[---------------------------------------------------------
 	Primary weapon attack.
 -----------------------------------------------------------]]
 function SWEP:PrimaryAttack()
+
 	if ( !self:CanPrimaryAttack() ) then return end
 	
 	if ( CurTime() - self.Weapon:GetLastFireTime() ) > 1.0 then
@@ -114,11 +121,7 @@ function SWEP:PrimaryAttack()
 	
 	self.Owner:FireBullets( bullet )
 	
-	self:DoMuzzleFlash( MUZZLEFLASH_TH_EINAR1 )
-	
-	--
 	self:DefaultShellEject()
-	--
 	
 	self.Weapon:EmitSound( self.ShootSound )
 	
@@ -129,7 +132,9 @@ function SWEP:PrimaryAttack()
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
 	end
 	
-	self.Owner:MuzzleFlash()
+	-- Do a muzzleflash effect.
+	self:MuzzleEffect()
+
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )
 	
 	local viewpunch = self.Owner:GetViewPunchAngles()
@@ -144,7 +149,11 @@ function SWEP:PrimaryAttack()
 	
 	self.Owner:SetEyeAngles( viewpunch )
 	
+	if self:IsZoomed() then
+	self:SetNextPrimaryFire( CurTime() + self.Primary.FireRate + 0.7 )
+	else
 	self:SetNextPrimaryFire( CurTime() + self.Primary.FireRate )
+	end
 	self:SetNextSecondaryFire( CurTime() + self.Primary.FireRate )
 	
 	if self.Weapon:Clip1() > 0 then

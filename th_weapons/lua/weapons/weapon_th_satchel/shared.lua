@@ -11,12 +11,15 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Toss satchel.\n+attack2: Detonate satchel.\n+reload: Reload.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot				= 4
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
 SWEP.ViewModel		= "models/th/v_satchel/v_satchel.mdl"
 SWEP.ViewModelRadio	= "models/th/v_satchel_radio/v_satchel_radio.mdl"
 SWEP.WorldModel		= "models/w_satchel.mdl"
+SWEP.PModel			= "models/th/p_satchel/p_satchel.mdl"
 
 SWEP.Spawnable			= true
 SWEP.AdminOnly			= false
@@ -45,13 +48,17 @@ end
 
 function SWEP:Deploy()
 
-	if self.Weapon:GetChargeReady() != 0 then
-		self:SetViewModel( self.ViewModelRadio )
-	else
-		self:SetViewModel( self.ViewModel )
+	local result = BaseClass.Deploy( self )
+	
+	if result then
+		if self.Weapon:GetChargeReady() != 0 then
+			self:SetViewModel( self.ViewModelRadio )
+		else
+			self:SetViewModel( self.ViewModel )
+		end
 	end
 
-	return BaseClass.Deploy( self )
+	return result
 end
 
 --[[---------------------------------------------------------
@@ -105,11 +112,15 @@ end
 -----------------------------------------------------------]]
 function SWEP:Deploy()
 	
-	if !self:CanDeploy() then return false end
+	local result = BaseClass.Deploy( self )
 	
-	self.Weapon:SetNextIdle( CurTime() + RandomFloat( 10, 15 ) )
-
-	return true
+	if result then
+		if !self:CanDeploy() then return false end
+		
+		self.Weapon:SetNextIdle( CurTime() + RandomFloat( 10, 15 ) )
+	end
+	
+	return result
 end
 
 --[[---------------------------------------------------------

@@ -12,11 +12,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire using one barrel.\n+attack2: Fire using two barrels.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot				= 2
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_shotgun/v_shotgun.mdl'
 SWEP.WorldModel = 'models/th/w_shotgun/w_shotgun.mdl'
+SWEP.PModel = 'models/th/p_shotgun/p_shotgun.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -113,7 +116,8 @@ function SWEP:PrimaryAttack()
 	
 	self:TakePrimaryAmmo( 1 )
 
-	self.Owner:MuzzleFlash()
+	-- Do a muzzleflash effect.
+	self:MuzzleEffect( MUZZLEFLASH_HL1_357, 1.2 )
 	
 	-- player "shoot" animation
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )
@@ -148,9 +152,7 @@ function SWEP:PrimaryAttack()
 	
 	self.Owner:FireBullets( bullet )
 	
-	--
 	self:DefaultShellEject( SHELL_SHOTGUN, TE_BOUNCE_SHOTSHELL )
-	--
 	
 	if self.Weapon:Clip1() != 0 then
 		self.Weapon:SetPumpTime( CurTime() + 0.5 )
@@ -202,7 +204,8 @@ function SWEP:SecondaryAttack()
 	
 	self:TakePrimaryAmmo( 2 )
 
-	self.Owner:MuzzleFlash()
+	-- Do a muzzleflash effect.
+	self:MuzzleEffect( MUZZLEFLASH_HL1_SHOTGUN_DOUBLE, 1.5 )
 	
 	-- player "shoot" animation
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )
@@ -237,11 +240,9 @@ function SWEP:SecondaryAttack()
 	
 	self.Owner:FireBullets( bullet )
 	
-	--
 	for i = 0, 1 do
 		self:DefaultShellEject( SHELL_SHOTGUN, TE_BOUNCE_SHOTSHELL )
 	end
-	--
 	
 	if self.Weapon:Clip1() != 0 then
 		self.Weapon:SetPumpTime( CurTime() + 0.95 )
@@ -280,6 +281,11 @@ function SWEP:Reload()
 		self.Weapon:SetNextIdle( CurTime() + 0.6 )
 		self:SetNextPrimaryFire( CurTime() + 1.0 )
 		self:SetNextSecondaryFire( CurTime() + 1.0 )
+		
+		-- player "reload" animation
+		self.Owner:SetAnimation( PLAYER_RELOAD )
+		self.Owner:DoAnimationEvent( PLAYERANIMEVENT_RELOAD )
+		
 		return;
 
 	elseif self.Weapon:GetInSpecialReload() == 1 then

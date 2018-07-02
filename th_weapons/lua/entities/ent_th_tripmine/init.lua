@@ -34,6 +34,9 @@ local TRIPMINE_TRACE_LENGTH	= 16384
 -- Represents the amount of damage casted to a player.
 local tripmine_blast_damage = GetConVar('sk_th_plr_dmg_tripmine') or CreateConVar( 'sk_th_plr_dmg_tripmine', '150' )
 
+-- Blast radius scale factor
+local tripmine_radius_factor = GetConVar( 'sk_hl1_grenade_radius_factor' ) or CreateConVar( 'sk_hl1_grenade_radius_factor', '2.5' )
+
 --[[---------------------------------------------------------
 	Perform Server-side initialization.
 -----------------------------------------------------------]]
@@ -70,7 +73,7 @@ function ENT:InitializeServerSide()
 	--pev->takedamage = DAMAGE_YES;
 	--pev->dmg = gSkillData.plrDmgTripmine;
 	self:SetBlastDamage( tripmine_blast_damage:GetFloat() )
-	self:SetBlastRadius( self:GetBlastDamage() )
+	self:SetBlastRadius( self:GetBlastDamage() * tripmine_radius_factor:GetFloat() )
 	self:SetHealth(1) -- don't let die normally
 
 	if IsValid( self:GetOwner() ) then

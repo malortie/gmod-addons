@@ -11,11 +11,14 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Toggle Zoom.\n+reload: Reload.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot			= 2
+SWEP.SlotPos			= 3
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
 SWEP.ViewModel		= "models/th/v_crossbow/v_crossbow.mdl"
 SWEP.WorldModel		= 'models/w_crossbow.mdl'
+SWEP.PModel			= 'models/th/p_crossbow/p_crossbow.mdl'
 
 SWEP.Spawnable			= true
 SWEP.AdminOnly			= false
@@ -81,13 +84,17 @@ end
 -----------------------------------------------------------]]
 function SWEP:Deploy()
 
-	if self:Clip1() == 0 then
-		self:SendWeaponAnim( ACT_CROSSBOW_DRAW_UNLOADED )
-	else
-		self:SendWeaponAnim( ACT_VM_DRAW )
+	local result = BaseClass.Deploy( self )
+
+	if result then
+		if self:Clip1() == 0 then
+			self:SendWeaponAnim( ACT_CROSSBOW_DRAW_UNLOADED )
+		else
+			self:SendWeaponAnim( ACT_VM_DRAW )
+		end
 	end
 	
-	return BaseClass.Deploy( self )
+	return result
 end
 
 --[[---------------------------------------------------------
@@ -127,6 +134,7 @@ function SWEP:FireSniperBolt()
 	self:TakePrimaryAmmo(1)
 	
 	self:EmitSound( self.ShootSound )
+	self:EmitSound( self.ReloadSound )
 	
 	if self:Clip1() == 0 then
 		self:SendWeaponAnim( ACT_VM_SECONDARYATTACK )
@@ -188,7 +196,7 @@ function SWEP:FireBolt()
 	self:TakePrimaryAmmo(1)
 	
 	self:EmitSound( self.ShootSound )
-	self:EmitSound( self.Shoot2Sound )
+	self:EmitSound( self.ReloadSound )
 	
 	if self:Clip1() == 0 then
 		self:SendWeaponAnim( ACT_VM_SECONDARYATTACK )

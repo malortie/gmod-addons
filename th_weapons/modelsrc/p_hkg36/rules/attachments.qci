@@ -1,0 +1,2 @@
+$attachment "muzzle" "ValveBiped.muzzle" -0.00 0.00 0.00 rotate -0 -0 -90
+$attachment "1" "ValveBiped.w_shotgun" 0.80 -0.30 0.50 rotate -0 0 -0

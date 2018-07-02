@@ -1,0 +1,14 @@
+$sequence idle {
+	idle
+	activity ACT_IDLE 1
+	fps 30
+}
+
+$sequence "fire" {
+	fire
+	activity "ACT_RANGE_ATTACK_SHOTGUN" 1
+	{ event AE_NPC_MUZZLEFLASH 0 "SHOTGUN MUZZLE" }
+	{ event 6001 0 "2" }
+	{ event 3004 0 "" }
+	fps 5
+}

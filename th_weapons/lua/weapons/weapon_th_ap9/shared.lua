@@ -12,11 +12,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Burst fire.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 1
+SWEP.SlotPos			= 4
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_ap9/v_ap9.mdl'
 SWEP.WorldModel = 'models/th/w_ap9/w_ap9.mdl'
+SWEP.PModel = 'models/th/p_ap9/p_ap9.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -25,7 +28,7 @@ SWEP.Primary.ClipSize = 40
 SWEP.Primary.DefaultClip = 40
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = AMMO_CLASS_TH_AP9
-SWEP.Primary.FireRate = 0.16
+SWEP.Primary.FireRate = 0.13
 
 SWEP.Secondary.ClipSize = -1
 SWEP.Secondary.DefaultClip = -1
@@ -68,6 +71,9 @@ function SWEP:Initialize()
 	self.Weapon:SetNumBurstFire( 0 )
 	self.Weapon:SetNextBurst( 0 )
 	self.Weapon:SetInBurstFire( false )
+	
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_TH_AP9 )
+	self.Weapon:SetMuzzleFlashScale( 0.5 )
 end
 
 --[[---------------------------------------------------------
@@ -127,7 +133,7 @@ function SWEP:PrimaryAttack()
 	self:TakePrimaryAmmo( 1 )
 	
 	-- Do a muzzleflash effect.
-	owner:MuzzleFlash()
+	self:MuzzleEffect()
 	
 	-- Play primary attack sound.
 	self.Weapon:EmitSound( self.ShootSound )
@@ -240,7 +246,7 @@ function SWEP:DoBurstFire()
 	self:TakePrimaryAmmo( 1 )
 	
 	-- Do a muzzleflash effect.
-	owner:MuzzleFlash()
+	self:MuzzleEffect()
 	
 	-- Play primary attack sound.
 	self.Weapon:EmitSound( self.ShootSound )

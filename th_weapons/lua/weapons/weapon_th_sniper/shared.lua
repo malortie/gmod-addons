@@ -11,11 +11,14 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Toggle Zoom.\n+reload: Reload.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot				= 3
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
 SWEP.ViewModel		= "models/th/v_hkg36/v_hkg36.mdl"
 SWEP.WorldModel		= "models/th/w_hkg36/w_hkg36.mdl"
+SWEP.PModel			= "models/th/p_hkg36/p_hkg36.mdl"
 
 SWEP.Spawnable			= true
 SWEP.AdminOnly			= false
@@ -67,8 +70,11 @@ function SWEP:Initialize()
 	self.Weapon:SetViewPunchTime( 0 )
 	self.Weapon:SetLastFireTime( 0 )
 	self.Weapon:SetNumShotsFired( 0 )
+
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_TH_HKG36 )
+	self.Weapon:SetMuzzleFlashScale( 1 )
 	
-	self:SetHoldType( 'crossbow' )
+	self:SetHoldType( 'ar2' )
 end
 
 
@@ -76,6 +82,7 @@ end
 	Primary weapon attack.
 -----------------------------------------------------------]]
 function SWEP:PrimaryAttack()
+
 	if ( !self:CanPrimaryAttack() ) then return end
 	
 	if ( CurTime() - self.Weapon:GetLastFireTime() ) > 1.0 then
@@ -108,7 +115,10 @@ function SWEP:PrimaryAttack()
 	self.Weapon:EmitSound( self.ShootSound )
 	
 	self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
-	self.Owner:MuzzleFlash()
+
+	-- Do a muzzleflash effect.
+	self:MuzzleEffect()
+
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )
 	
 	local viewpunch = self.Owner:GetViewPunchAngles()
@@ -125,8 +135,11 @@ function SWEP:PrimaryAttack()
 	
 	self.Owner:SetEyeAngles( viewpunch )
 	
+	if self:IsZoomed() then
+	self:SetNextPrimaryFire( CurTime() + self.Primary.FireRate + 0.7 )
+	else
 	self:SetNextPrimaryFire( CurTime() + self.Primary.FireRate )
-	self:SetNextSecondaryFire( CurTime() + self.Primary.FireRate )
+	end
 	self.Weapon:SetNextIdle( CurTime() + RandomFloat( 10, 15 ) )
 	
 	self.Weapon:SetLastFireTime( CurTime() )

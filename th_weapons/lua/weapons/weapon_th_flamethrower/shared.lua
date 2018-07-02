@@ -11,11 +11,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 3
+SWEP.SlotPos			= 3
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_egon/v_egon.mdl'
 SWEP.WorldModel = 'models/w_egon.mdl'
+SWEP.PModel = 'models/th/p_egon/p_egon.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -73,7 +76,7 @@ function SWEP:Initialize()
 	self.Weapon:SetSequenceResetTime( 0 )
 	self.Weapon:SetSequenceNumber( 0 )
 
-	self:SetHoldType( 'ar2' )
+	self:SetHoldType( 'physgun' )
 end
 
 --[[---------------------------------------------------------

@@ -119,4 +119,3 @@ AccessorFunc( SWEP, "fNPCFireRate", 		"NPCFireRate" )
 AccessorFunc( SWEP, "fNPCMinRestTime", 	"NPCMinRest" )
 AccessorFunc( SWEP, "fNPCMaxRestTime", 	"NPCMaxRest" )
 
-

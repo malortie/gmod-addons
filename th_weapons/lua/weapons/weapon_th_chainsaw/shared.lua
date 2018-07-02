@@ -12,11 +12,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= ''
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 0
+SWEP.SlotPos			= 4
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_chainsaw/v_chainsaw.mdl'
 SWEP.WorldModel = 'models/th/w_chainsaw/w_chainsaw.mdl'
+SWEP.PModel = 'models/th/p_chainsaw/p_chainsaw.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -105,7 +108,7 @@ function SWEP:Initialize()
 	self.Weapon:SetSwingAttackTime( 0 )
 	self.Weapon:SetEngineOn( false )
 
-	self:SetHoldType( "melee2" )
+	self:SetHoldType( "physgun" )
 end
 
 --[[---------------------------------------------------------

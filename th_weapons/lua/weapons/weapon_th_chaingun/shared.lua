@@ -11,11 +11,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 3
+SWEP.SlotPos			= 4
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_tfac/v_tfac.mdl'
 SWEP.WorldModel = 'models/th/w_tfac/w_tfac.mdl'
+SWEP.PModel = 'models/th/p_mini2/p_mini2.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -79,7 +82,6 @@ function SWEP:SetupDataTables()
 	self.Weapon:NetworkVar( 'Float', 4, 'NextSpinSound' )
 	self.Weapon:NetworkVar( 'Float', 5, 'OriginalOwnerRunSpeed' )
 	self.Weapon:NetworkVar( 'Float', 6, 'OriginalOwnerWalkSpeed' )
-
 end
 
 --[[---------------------------------------------------------
@@ -94,7 +96,10 @@ function SWEP:Initialize()
 	self.Weapon:SetOriginalOwnerRunSpeed( -1 )
 	self.Weapon:SetOriginalOwnerWalkSpeed( -1 )
 	
-	self:SetHoldType( 'smg' )
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_TH_CHAINGUN )
+	self.Weapon:SetMuzzleFlashScale( 1.5 )
+	
+	self:SetHoldType( 'shotgun' )
 end
 
 --[[---------------------------------------------------------
@@ -120,7 +125,7 @@ end
 	Primary weapon attack.
 -----------------------------------------------------------]]
 function SWEP:PrimaryAttack()
-
+	
 	if !self:CanPrimaryAttack() then
 		self:Spindown()
 		return
@@ -146,9 +151,9 @@ function SWEP:CanSecondaryAttack() return false end
 -----------------------------------------------------------]]
 function SWEP:Think()
 
-	self:UpdateWeaponCannon()
-
 	BaseClass.Think( self )
+
+	self:UpdateWeaponCannon()
 end
 
 --[[---------------------------------------------------------
@@ -305,10 +310,11 @@ function SWEP:DoFire()
 	
 	self.Weapon:SetNextAmmoDrain( CurTime() + self.AmmoDrainRate )
 	
-	self.Owner:MuzzleFlash()
+	-- Do a muzzleflash effect.
+	self:MuzzleEffect()
 	
 	local bullet = {}
-	bullet.Num 		= 1
+	bullet.Num 		= 4
 	bullet.Src 		= owner:GetShootPos()
 	bullet.Dir 		= owner:GetAimVector()
 	bullet.Spread 	= VECTOR_CONE_10DEGREES
@@ -319,11 +325,9 @@ function SWEP:DoFire()
 	
 	owner:FireBullets( bullet )
 
-	self:DoMuzzleFlash( MUZZLEFLASH_TH_CHAINGUN )
-	
 	self:DefaultShellEject()
 	
-	self:TakePrimaryAmmo( 1 )
+	self:TakePrimaryAmmo( 2 )
 	
 	owner:SetAnimation( PLAYER_ATTACK1 )
 	

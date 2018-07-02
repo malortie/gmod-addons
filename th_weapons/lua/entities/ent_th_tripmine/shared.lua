@@ -7,7 +7,7 @@ ENT.Base	= 'base_anim'
 ENT.Type 	= "anim"
 
 ENT.PrintName	= 'Tripmine Entity'
-ENT.Category	= 'They Hunger'
+ENT.Category	= 'Half-Life: Source'
 
 ENT.Spawnable = false
 ENT.AdminOnly = false

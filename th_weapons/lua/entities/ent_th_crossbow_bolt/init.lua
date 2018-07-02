@@ -33,7 +33,7 @@ function ENT:InitializeServerSide()
 	self:SetSolid( SOLID_BBOX )
 
 	-- Half gravity scale.
-	self:SetGravity( 0.5 )
+	self:SetGravity( 0.05 )
 	
 	-- Set entity's model.
 	self:SetModel( self.Model )

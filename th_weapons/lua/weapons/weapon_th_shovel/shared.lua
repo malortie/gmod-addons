@@ -11,11 +11,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Swing.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot				= 0
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel		= "models/th/v_shovel/v_shovel.mdl"
 SWEP.WorldModel		= "models/th/w_shovel/w_shovel.mdl"
+SWEP.PModel			= "models/th/p_shovel/p_shovel.mdl"
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -86,7 +89,7 @@ function SWEP:Initialize()
 	self.Weapon:SetHitPos( vector_origin )
 	self.Weapon:SetHitNormal( vector_origin )
 	
-	self:SetHoldType( "melee" )
+	self:SetHoldType( "melee2" )
 end
 
 --[[---------------------------------------------------------

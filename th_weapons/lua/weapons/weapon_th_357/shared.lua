@@ -12,11 +12,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Toggle Zoom (Multiplayer only).\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 1
+SWEP.SlotPos			= 2
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_357/v_357.mdl'
 SWEP.WorldModel = 'models/w_357.mdl'
+SWEP.PModel = 'models/th/p_357/p_357.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -66,6 +69,8 @@ function SWEP:Initialize()
 	BaseClass.Initialize( self )
 	
 	self.Weapon:SetInZoom( false )
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_HL1_357 )
+	self.Weapon:SetMuzzleFlashScale( 1.2 )
 
 	self:SetHoldType( "revolver" )
 end
@@ -95,14 +100,18 @@ end
 -----------------------------------------------------------]]
 function SWEP:Deploy()
 
-	if !game.SinglePlayer() then
-		-- enable laser sight geometry.
-		self.Owner:GetViewModel():SetBodygroup( BODYGROUP_SCOPE, BODYGROUP_SCOPE_ON )
-	else
-		self.Owner:GetViewModel():SetBodygroup( BODYGROUP_SCOPE, BODYGROUP_SCOPE_OFF )
+	local result = BaseClass.Deploy( self )
+
+	if result then
+		if !game.SinglePlayer() then
+			-- enable laser sight geometry.
+			self.Owner:GetViewModel():SetBodygroup( BODYGROUP_SCOPE, BODYGROUP_SCOPE_ON )
+		else
+			self.Owner:GetViewModel():SetBodygroup( BODYGROUP_SCOPE, BODYGROUP_SCOPE_OFF )
+		end
 	end
 	
-	return BaseClass.Deploy( self )
+	return result
 end
 
 --[[---------------------------------------------------------
@@ -127,7 +136,8 @@ function SWEP:PrimaryAttack()
 
 	self:TakePrimaryAmmo( 1 )
 
-	self.Owner:MuzzleFlash()
+	-- Do a muzzleflash effect.
+	self:MuzzleEffect()
 	
 	-- player "shoot" animation
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )

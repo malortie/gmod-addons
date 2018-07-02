@@ -11,11 +11,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Launch grenade.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot				= 2
+SWEP.SlotPos			= 1
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_9mmar/v_9mmAR.mdl'
 SWEP.WorldModel = 'models/th/w_9mmar/w_9mmar.mdl'
+SWEP.PModel = 'models/th/p_9mmar/p_9mmar.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -49,8 +52,11 @@ local mp5_damage = GetConVar( 'sk_th_plr_dmg_9mm_bullet' ) or CreateConVar( 'sk_
 function SWEP:Initialize()
 
 	BaseClass.Initialize( self )
+	
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_HL1_MP5 )
+	self.Weapon:SetMuzzleFlashScale( 1 )
 
-	self:SetHoldType( 'smg' )
+	self:SetHoldType( 'ar2' )
 end
 
 --[[---------------------------------------------------------
@@ -62,7 +68,8 @@ function SWEP:PrimaryAttack()
 
 	self:TakePrimaryAmmo( 1 )
 
-	self.Owner:MuzzleFlash()
+	-- Do a muzzleflash effect.
+	self:MuzzleEffect()
 	
 	-- player "shoot" animation
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )
@@ -72,7 +79,7 @@ function SWEP:PrimaryAttack()
 	local vecSrc = self.Owner:GetShootPos()
 	local vecAiming = self.Owner:GetAimVector()
 
-	self.Owner:ViewPunch( Angle( RandomFloat( -2, 2 ), 0, 0 ) )
+	self.Owner:ViewPunch( Angle( RandomFloat( -1.5, 1.5 ), 0, 0 ) )
 	
 	self.Weapon:EmitSound( self.ShootSound )
 	
@@ -97,11 +104,9 @@ function SWEP:PrimaryAttack()
 	
 	self.Owner:FireBullets( bullet )
 	
-	--
 	self:DefaultShellEject()
-	--
 	
-	self:SetNextPrimaryFire( CurTime() + 0.1 )
+	self:SetNextPrimaryFire( CurTime() + 0.08 )
 
 	self.Weapon:SetNextIdle( CurTime() + RandomFloat( 10, 15 ) )
 end

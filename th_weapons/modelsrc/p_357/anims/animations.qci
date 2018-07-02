@@ -1,0 +1,12 @@
+$sequence idle {
+	idle
+	activity ACT_IDLE 1
+	fps 30
+}
+
+$sequence fire {
+	fire
+	activity "ACT_RANGE_ATTACK_PISTOL" 1
+	{ event 5003 0 "2" }
+	fps 30
+}

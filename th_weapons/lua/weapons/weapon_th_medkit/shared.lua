@@ -11,11 +11,14 @@ SWEP.Contact		= ''
 SWEP.Purpose		= ''
 SWEP.Instructions	= '+attack: Heal.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot				= 0
+SWEP.SlotPos			= 5
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
 SWEP.ViewModel		= "models/th/v_tfc_medic/v_tfc_medkit.mdl"
-SWEP.WorldModel		= 'models/th/w_tfc_medkit/w_tfc_medkit.mdl'
+SWEP.WorldModel		= "models/th/w_tfc_medkit/w_tfc_medkit.mdl"
+SWEP.PModel			= 'models/th/p_medkit/p_medkit.mdl'
 
 SWEP.Spawnable			= true
 SWEP.AdminOnly			= false

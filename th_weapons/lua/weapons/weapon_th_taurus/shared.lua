@@ -11,20 +11,23 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+reload: Reload.'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 1
+SWEP.SlotPos			= 3
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_taurus/v_taurus.mdl'
 SWEP.WorldModel = 'models/th/w_taurus/w_taurus.mdl'
+SWEP.PModel = 'models/th/p_taurus/p_taurus.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
 
-SWEP.Primary.ClipSize = 20
-SWEP.Primary.DefaultClip = 20
+SWEP.Primary.ClipSize = 10
+SWEP.Primary.DefaultClip = 10
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = AMMO_CLASS_TH_TAURUS
-SWEP.Primary.FireRate = 0.3
+SWEP.Primary.FireRate = 0.25
 
 SWEP.Secondary.ClipSize = -1
 SWEP.Secondary.DefaultClip = -1
@@ -47,6 +50,9 @@ local taurus_damage = GetConVar( 'sk_th_plr_dmg_taurus' ) or CreateConVar( 'sk_t
 function SWEP:Initialize()
 	
 	BaseClass.Initialize( self )
+	
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_HL1_GLOCK )
+	self.Weapon:SetMuzzleFlashScale( 0.5 )
 
 	self:SetHoldType( 'pistol' )
 end
@@ -60,7 +66,8 @@ function SWEP:PrimaryAttack()
 	
 	self:TakePrimaryAmmo( 1 )
 
-	self.Owner:MuzzleFlash()
+	-- Do a muzzleflash effect.
+	self:MuzzleEffect()
 	
 	-- player "shoot" animation
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )
@@ -89,9 +96,7 @@ function SWEP:PrimaryAttack()
 	
 	self.Owner:FireBullets( bullet )
 	
-	--
 	self:DefaultShellEject()
-	--
 	
 	self:SetNextPrimaryFire( CurTime() + self.Primary.FireRate )
 

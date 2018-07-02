@@ -54,6 +54,10 @@ function SWEP:SetupDataTables()
 	self.Weapon:NetworkVar( 'Int', 1, 'InSpecialReload' )
 	self.Weapon:NetworkVar( 'Int', 2, 'ChargeReady' )
 	self.Weapon:NetworkVar( 'Bool', 0, 'DrawMuzzleFlash' )
+	
+	self.Weapon:NetworkVar( 'Float', 27, 'MuzzleFlashTime' )
+	self.Weapon:NetworkVar( 'Float', 28, 'MuzzleFlashScale' )
+	self.Weapon:NetworkVar( 'Int', 28, 'MuzzleFlashType' )
 
 end
 
@@ -71,6 +75,12 @@ function SWEP:Initialize()
 	self.Weapon:SetInSpecialReload( 0 )
 	self.Weapon:SetChargeReady( 0 )
 	self.Weapon:SetDrawMuzzleFlash( true )
+	
+	--
+	self.Weapon:SetMuzzleFlashTime( 0 )
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_HL1_GLOCK )
+	self.Weapon:SetMuzzleFlashScale( 1 )
+	--
 end
 
 
@@ -113,6 +123,7 @@ end
    Desc: Called every frame
 -----------------------------------------------------------]]
 function SWEP:Think()
+	self:UpdateMuzzleFlash()
 	self:WeaponIdle()
 end
 
@@ -160,6 +171,8 @@ function SWEP:Deploy()
 	self:CheckMuzzleFlash()
 	
 	self.Weapon:SetNextIdle( CurTime() + 5.0 )
+	
+	self:ResetBodygroups()
 	
 	return true
 end
@@ -715,50 +728,84 @@ function SWEP:EnableMuzzleFlash( state )
 	self.Weapon:SetDrawMuzzleFlash( state )
 end
 
-function SWEP:DoMuzzleFlash( MuzzleType, Attachment )
+function SWEP:MuzzleEffect( type, scale )
+	self.Weapon:SetMuzzleFlashTime( CurTime() )
+	if ( type != nil ) then self.Weapon:SetMuzzleFlashType( type ) end
+	if ( scale != nil ) then self.Weapon:SetMuzzleFlashScale( scale ) end
+end
 
-	if !IsValid( self ) or 
-	   !IsValid( self.Owner ) or 
-	   !IsValid( self.Owner:GetViewModel() ) then
-		return
+function SWEP:GetMuzzleEffectName()
+	local effectName = "CS_MuzzleFlash"
+	local muzzleFlashType = self.Weapon:GetMuzzleFlashType() or MUZZLEFLASH_HL1_GLOCK 
+	
+	if muzzleFlashType == MUZZLEFLASH_HL1_GLOCK then
+	elseif muzzleFlashType == MUZZLEFLASH_HL1_MP5 then	
+		effectName = "CS_MuzzleFlash_X"
+	elseif muzzleFlashType == MUZZLEFLASH_HL1_357 then
+	elseif muzzleFlashType == MUZZLEFLASH_HL1_SHOTGUN_DOUBLE then
+	elseif muzzleFlashType == MUZZLEFLASH_TH_AP9 then
+	elseif muzzleFlashType == MUZZLEFLASH_TH_HKG36 then
+	elseif muzzleFlashType == MUZZLEFLASH_TH_CHAINGUN then
+	elseif muzzleFlashType == MUZZLEFLASH_TH_EINAR1 then
+		effectName = "CS_MuzzleFlash_X"
 	end
 	
-	-- Only display the muzzle flash if we are allowed to.
-	if self:ShouldDrawMuzzleFlash() == false then return end
+	return effectName
+end
+
+function SWEP:DoMuzzleFlash()
 	
-	Attachment = Attachment or 1
-	MuzzleType = MuzzleType or MUZZLEFLASH_HL1_GLOCK
+	if SERVER and game.SinglePlayer() then return end
+
+	if !self:ShouldDrawMuzzleFlash() then return end
+	
+	if CLIENT then
+		if self:IsCarriedByLocalPlayer() and !self.Owner:ShouldDrawLocalPlayer() then
+			return
+		end
+	end
 
 	local data = EffectData()
-	
 	data:SetFlags( 0 )
-	data:SetEntity( self.Owner:GetViewModel() )
-	data:SetAttachment( Attachment )
+	data:SetEntity( self )
+	data:SetAttachment( 1 )
 	
-	local scale = 1
-	local name = "CS_MuzzleFlash"
+	local effectName = "CS_MuzzleFlash"
+	local muzzleFlashType = self.Weapon:GetMuzzleFlashType() or MUZZLEFLASH_HL1_GLOCK 
+	local muzzleFlashScale = self.Weapon:GetMuzzleFlashScale() or 1;
 	
-	if MuzzleType == MUZZLEFLASH_HL1_GLOCK then
-		scale = 0.5
-	elseif MuzzleType == MUZZLEFLASH_HL1_MP5 then	
-		scale = 1
-		name = "CS_MuzzleFlash_X"
-	elseif MuzzleType == MUZZLEFLASH_HL1_357 then
-		scale = 1.2
-	elseif MuzzleType == MUZZLEFLASH_HL1_SHOTGUN_DOUBLE then
-		scale = 1.5
-	elseif MuzzleType == MUZZLEFLASH_TH_AP9 then
-		scale = 0.5
-	elseif MuzzleType == MUZZLEFLASH_TH_HKG36 then
-		scale = 1
-	elseif MuzzleType == MUZZLEFLASH_TH_CHAINGUN then
-		scale = 1.5
-	elseif MuzzleType == MUZZLEFLASH_TH_EINAR1 then
-		scale = 1.5
-		name = "CS_MuzzleFlash_X"
+	if muzzleFlashType == MUZZLEFLASH_HL1_GLOCK then
+	elseif muzzleFlashType == MUZZLEFLASH_HL1_MP5 then	
+		effectName = "CS_MuzzleFlash_X"
+	elseif muzzleFlashType == MUZZLEFLASH_HL1_357 then
+	elseif muzzleFlashType == MUZZLEFLASH_HL1_SHOTGUN_DOUBLE then
+	elseif muzzleFlashType == MUZZLEFLASH_TH_AP9 then
+	elseif muzzleFlashType == MUZZLEFLASH_TH_HKG36 then
+	elseif muzzleFlashType == MUZZLEFLASH_TH_CHAINGUN then
+	elseif muzzleFlashType == MUZZLEFLASH_TH_EINAR1 then
+		effectName = "CS_MuzzleFlash_X"
 	end
 	
-	data:SetScale( scale )
-	util.Effect( name, data )
+	data:SetScale( muzzleFlashScale )
+	util.Effect( effectName, data )
 	
+	self.Owner:MuzzleFlash()
+end
+
+function SWEP:UpdateMuzzleFlash()
+	if self.Weapon:GetMuzzleFlashTime() != 0 and self.Weapon:GetMuzzleFlashTime() <= CurTime() then
+		self:DoMuzzleFlash()
+		self.Weapon:SetMuzzleFlashTime( 0 )
+	end
+end
+
+function SWEP:ResetBodygroups()
+	local owner = self.Owner
+	if !IsValid( owner ) then return false end
+
+	local vm = owner:GetViewModel()
+	if !vm then return false end
+
+	vm:SetBodygroup( 0, 0 )
+	return true
 end

@@ -11,11 +11,14 @@ SWEP.Contact		= ""
 SWEP.Purpose		= ""
 SWEP.Instructions	= '+attack: Toss grenade.'
 SWEP.Category		= 'They Hunger'
+SWEP.Slot			= 4
+SWEP.SlotPos			= 1
 
 SWEP.ViewModelFOV	= 90
 SWEP.ViewModelFlip	= false
 SWEP.ViewModel		= "models/th/v_tnt/v_tnt.mdl"
 SWEP.WorldModel		= "models/th/w_tnt/w_tnt.mdl"
+SWEP.PModel			= "models/th/p_tnt/p_tnt.mdl"
 
 SWEP.Spawnable			= true
 SWEP.AdminOnly			= false
@@ -50,8 +53,13 @@ end
 			using lastinv command.
 -----------------------------------------------------------]]
 function SWEP:Deploy()
-	self.Weapon:SetReleaseThrow( -1 )
-	return BaseClass.Deploy( self )
+	local result = BaseClass.Deploy( self )
+	
+	if result then
+		self.Weapon:SetReleaseThrow( -1 )
+	end
+	
+	return result
 end
 
 --[[---------------------------------------------------------

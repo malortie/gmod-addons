@@ -11,11 +11,14 @@ SWEP.Contact = ''
 SWEP.Purpose = ''
 SWEP.Instructions	= '+attack: Fire.\n+attack2: Toggle silencer.\n+reload: Reload'
 SWEP.Category = 'They Hunger'
+SWEP.Slot			= 3
+SWEP.SlotPos			= 4
 
 SWEP.ViewModelFOV = 90
 SWEP.ViewModelFlip = false
 SWEP.ViewModel = 'models/th/v_9mmhandgun/v_9mmhandgun.mdl'
 SWEP.WorldModel = 'models/th/w_silencer/w_silencer.mdl'
+SWEP.PModel = 'models/th/p_9mmhandgun/p_9mmhandgun.mdl'
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = false
@@ -89,6 +92,9 @@ function SWEP:Initialize()
 	self.Weapon:SetSilencerBodygroupSwapEventTime( 0 )
 	self.Weapon:SetSilencerState( SilencerStates.None )
 	self.Weapon:SetSilenced( true )
+
+	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_HL1_GLOCK )
+	self.Weapon:SetMuzzleFlashScale( 0.5 )
 	
 	self:EnableMuzzleFlash( !self:GetSilenced() )
 	
@@ -118,10 +124,14 @@ end
 -----------------------------------------------------------]]
 function SWEP:Deploy()
 
-	-- Perform silencer checking.
-	self:CheckSilencerVisibility()
+	local result = BaseClass.Deploy( self )
+
+	if result then
+		-- Perform silencer checking.
+		self:CheckSilencerVisibility()
+	end	
 	
-	return BaseClass.Deploy( self )
+	return result
 end
 
 --[[---------------------------------------------------------
@@ -168,7 +178,7 @@ end
 	Primary weapon attack.
 -----------------------------------------------------------]]
 function SWEP:PrimaryAttack()
-
+	
 	if !self:CanPrimaryAttack() then return end
 
 	if self:IsSilenced() then
@@ -252,9 +262,10 @@ end
 function SWEP:GlockFire( flSpread , flCycleTime, fUseAutoAim )
 
 	self:TakePrimaryAmmo( 1 )
-
+	
 	if !self:IsSilenced() then
-		self.Owner:MuzzleFlash()
+		-- Do a muzzleflash effect.
+		self:MuzzleEffect()
 	end	
 	
 	-- player "shoot" animation
@@ -299,9 +310,7 @@ function SWEP:GlockFire( flSpread , flCycleTime, fUseAutoAim )
 	
 	self.Owner:FireBullets( bullet )
 	
-	--
 	self:DefaultShellEject()
-	--
 	
 	self:SetNextPrimaryFire( CurTime() + flCycleTime )
 	self:SetNextSecondaryFire( CurTime() + flCycleTime )
