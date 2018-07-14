@@ -40,6 +40,8 @@ SWEP.ShootSound		= 'weapon_th_einar1.single'
 -- The sound to play when reloading.
 SWEP.ReloadSound	= 'weapon_th_einar1.reload'
 
+SWEP.MuzzleFlashOffset = Vector( 0, 0, 0 )
+
 -------------------------------------
 -- Skill ConVars
 -------------------------------------
@@ -86,7 +88,7 @@ function SWEP:Initialize()
 	self.Weapon:SetWasJustFired( false )
 	
 	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_TH_EINAR1 )
-	self.Weapon:SetMuzzleFlashScale( 1.5 )
+	self.Weapon:SetMuzzleFlashScale( 2 )
 	
 	self:SetHoldType( 'ar2' )
 end

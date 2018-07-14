@@ -39,6 +39,8 @@ SWEP.ShootSound 	= 'weapon_th_mp5.single'
 -- The sound to play on secondary attack.
 SWEP.Shoot2Sound 	= 'weapon_th_mp5.double'
 
+SWEP.MuzzleFlashOffset = Vector( 0, 0, 0 )
+
 -------------------------------------
 -- Skill ConVars
 -------------------------------------
@@ -54,7 +56,7 @@ function SWEP:Initialize()
 	BaseClass.Initialize( self )
 	
 	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_HL1_MP5 )
-	self.Weapon:SetMuzzleFlashScale( 1 )
+	self.Weapon:SetMuzzleFlashScale( 1.5 )
 
 	self:SetHoldType( 'ar2' )
 end

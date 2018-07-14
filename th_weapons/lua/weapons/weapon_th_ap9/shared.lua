@@ -38,6 +38,8 @@ SWEP.Secondary.Ammo = 'none'
 -- The sound to play on primary attack.
 SWEP.ShootSound = 'weapon_th_ap9.single'
 
+SWEP.MuzzleFlashOffset = Vector( 0, 0, -20 )
+
 SWEP.BurstFireRate	= 0.05
 SWEP.BurstCount 	= 3
 

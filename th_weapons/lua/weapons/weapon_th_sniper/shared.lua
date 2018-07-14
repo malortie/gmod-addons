@@ -37,6 +37,8 @@ SWEP.Secondary.Ammo			= "none"
 -- The sound to play on primary attack.
 SWEP.ShootSound = 'weapon_th_sniper.single'
 
+SWEP.MuzzleFlashOffset = Vector( 0, 0, 0 )
+
 -------------------------------------
 -- Skill ConVars
 -------------------------------------
@@ -72,7 +74,7 @@ function SWEP:Initialize()
 	self.Weapon:SetNumShotsFired( 0 )
 
 	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_TH_HKG36 )
-	self.Weapon:SetMuzzleFlashScale( 1 )
+	self.Weapon:SetMuzzleFlashScale( 0.9 )
 	
 	self:SetHoldType( 'ar2' )
 end

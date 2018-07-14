@@ -64,6 +64,18 @@ resource.AddFile('materials/entities/weapon_th_umbrella.png')
 --------------------------------------------------------------------
 
 --
+-- Effects
+--
+resource.AddFile('materials/effects/hl1/muzzleflash.vtf')
+resource.AddFile('materials/effects/hl1/muzzleflash.vmt')
+resource.AddFile('materials/effects/hl1/muzzleflash1.vtf')
+resource.AddFile('materials/effects/hl1/muzzleflash1.vmt')
+resource.AddFile('materials/effects/hl1/muzzleflash2.vtf')
+resource.AddFile('materials/effects/hl1/muzzleflash2.vmt')
+resource.AddFile('materials/effects/hl1/muzzleflash3.vtf')
+resource.AddFile('materials/effects/hl1/muzzleflash3.vmt')
+
+--
 -- View models
 --
 

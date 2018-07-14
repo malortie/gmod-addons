@@ -203,13 +203,6 @@ end
 		 returning anything but a vector indicates that you want the default action
 -----------------------------------------------------------]]
 function SWEP:GetTracerOrigin()
-
---[[
-	local ply = self:GetOwner()
-	local pos = ply:EyePos() + ply:EyeAngles():Right() * -5
-	return pos
---]]
-
 end
 
 
@@ -223,20 +216,12 @@ function SWEP:FireAnimationEvent( pos, ang, event, options )
 	if ( event == 5001 or event == 5011 or event == 5021 or event == 5031 ) then
 		
 		if !self:ShouldDrawMuzzleFlash() then return true end
-		
-		if self:IsCarriedByLocalPlayer() and self.Owner:ShouldDrawLocalPlayer() then
-			return
-		end
-		
-		local index = tonumber(options)
-		local attachment = math.floor( ( event - 4991 ) / 10 )
-		
+
 		local data = EffectData()
-		data:SetFlags( 0 )
 		data:SetEntity( self.Owner:GetViewModel() )
-		data:SetAttachment( 1 )
-		data:SetScale( self.Weapon:GetMuzzleFlashScale() or 1 )
-		util.Effect( self:GetMuzzleEffectName(), data )
+		data:SetMaterialIndex( self:GetMuzzleFlashMaterialIndex( self:GetMuzzleFlashType() or MUZZLEFLASH_HL1_GLOCK ) )
+		data:SetScale( self.Weapon:GetMuzzleFlashScale() )
+		util.Effect( "hl1_muzzleflash", data )
 		
 		return true
 	end

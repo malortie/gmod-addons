@@ -42,6 +42,8 @@ SWEP.ShootSound = 'weapon_th_glock.single'
 -- The sound to play when silenced.
 SWEP.ShootSilencedSound = 'weapon_th_glock.double'
 
+SWEP.MuzzleFlashOffset = Vector( 0, 0, 0 )
+
 -------------------------------------
 -- Skill ConVars
 -------------------------------------
@@ -94,7 +96,7 @@ function SWEP:Initialize()
 	self.Weapon:SetSilenced( true )
 
 	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_HL1_GLOCK )
-	self.Weapon:SetMuzzleFlashScale( 0.5 )
+	self.Weapon:SetMuzzleFlashScale( 0.8 )
 	
 	self:EnableMuzzleFlash( !self:GetSilenced() )
 	

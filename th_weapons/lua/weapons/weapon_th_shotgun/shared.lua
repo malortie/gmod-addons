@@ -48,6 +48,8 @@ SWEP.ReloadSound = 'weapon_th_shotgun.reload'
 -- The sound to play when pumping.
 SWEP.PumpSound = 'weapon_th_shotgun.special1'
 
+SWEP.MuzzleFlashOffset = Vector( 0, 0, 0 )
+
 -------------------------------------
 -- Skill ConVars
 -------------------------------------
@@ -117,7 +119,7 @@ function SWEP:PrimaryAttack()
 	self:TakePrimaryAmmo( 1 )
 
 	-- Do a muzzleflash effect.
-	self:MuzzleEffect( MUZZLEFLASH_HL1_357, 1.2 )
+	self:MuzzleEffect( MUZZLEFLASH_HL1_357, 1.5 )
 	
 	-- player "shoot" animation
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )

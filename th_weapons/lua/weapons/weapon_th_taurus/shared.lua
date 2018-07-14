@@ -37,6 +37,8 @@ SWEP.Secondary.Ammo = 'none'
 -- The sound to play on primary attack.
 SWEP.ShootSound = 'weapon_th_taurus.single'
 
+SWEP.MuzzleFlashOffset = Vector( 0, 0, 0 )
+
 -------------------------------------
 -- Skill ConVars
 -------------------------------------

@@ -56,6 +56,8 @@ SWEP.SpinSound 		= 'weapon_th_chaingun.spin'
 -- The speed factor to use when the player is firing.
 SWEP.OwnerSpeedScale = 0.25
 
+SWEP.MuzzleFlashOffset = Vector( 0, 0, 0 )
+
 -------------------------------------
 -- Skill ConVars
 -------------------------------------
@@ -97,7 +99,7 @@ function SWEP:Initialize()
 	self.Weapon:SetOriginalOwnerWalkSpeed( -1 )
 	
 	self.Weapon:SetMuzzleFlashType( MUZZLEFLASH_TH_CHAINGUN )
-	self.Weapon:SetMuzzleFlashScale( 1.5 )
+	self.Weapon:SetMuzzleFlashScale( 2.0 )
 	
 	self:SetHoldType( 'shotgun' )
 end
