@@ -242,6 +242,26 @@ resource.AddFile('materials/models/th/v_tnt/lighter.vmt')
 resource.AddFile('materials/models/th/v_tnt/tntside.vtf')
 resource.AddFile('materials/models/th/v_tnt/tntside.vmt')
 
+
+--
+-- Third person models
+--
+
+resource.AddFile('materials/models/th/p_mini2/backpack.vmt')
+resource.AddFile('materials/models/th/p_mini2/backpack.vtf')
+resource.AddFile('materials/models/th/p_mini2/barrel_chrome.vmt')
+resource.AddFile('materials/models/th/p_mini2/barrel_chrome.vtf')
+resource.AddFile('materials/models/th/p_mini2/barrelend.vmt')
+resource.AddFile('materials/models/th/p_mini2/barrelend.vtf')
+resource.AddFile('materials/models/th/p_mini2/body_side.vmt')
+resource.AddFile('materials/models/th/p_mini2/body_side.vtf')
+resource.AddFile('materials/models/th/p_mini2/grip.vmt')
+resource.AddFile('materials/models/th/p_mini2/grip.vtf')
+resource.AddFile('materials/models/th/p_sniper2/pmodel_body.vmt')
+resource.AddFile('materials/models/th/p_sniper2/pmodel_body.vtf')
+resource.AddFile('materials/models/th/p_sniper2/pmodel_chrome.vmt')
+resource.AddFile('materials/models/th/p_sniper2/pmodel_chrome.vtf')
+
 --
 -- World models
 --
