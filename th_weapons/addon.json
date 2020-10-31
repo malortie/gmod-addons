@@ -1,0 +1,11 @@
+{
+	"title"		:	"They Hunger Weapons",
+	"type"		:	"weapon",
+	"tags"		:	[ "realism", "fun" ],
+	"ignore"	:
+	[
+		"*.psd",
+		"*.vcproj",
+		"*.svn*"
+	]
+}
