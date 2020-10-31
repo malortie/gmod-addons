@@ -113,6 +113,8 @@ end
 -----------------------------------------------------------]]
 function SWEP:Holster( wep )
 
+	-- Reset viewmodel bodygroup value.
+	self:SetSilencerVisible( false )
 	self:ResetWeaponSilencer()
 	
 	return BaseClass.Holster( self, wep )
